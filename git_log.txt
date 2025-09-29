@@ -1,0 +1,8 @@
+3e17483 Personalize hello message
+adb6e6a Add hello_git.py
+c23d761 Add my name and date
+9d71e6e Update README.md
+fc44b94 Merge pull request #1 from ap-unil-2025/main
+7bcb689 Add GitHub Classroom autograding configuration
+c4c1d7c Update README.md
+2dc2daa Initial commit
