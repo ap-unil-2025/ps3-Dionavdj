@@ -83,7 +83,13 @@ def display_analysis(analysis):
 
     print("\nAnalysis Results:")
     print("-" * 20)
-
+    print("count: ", analysis['count'])
+    print("sum: ", analysis['sum'])
+    print("average:", round(analysis['average'], 2) )
+    print("minimum: ",analysis['minimum'])
+    print("maximum: ", analysis['maximum'])
+    print("even count: ", analysis['even_count'])
+    print("odd count: ", analysis['odd_count'])
     # TODO: Display all analysis results in a nice format
     # Example:
     # Count: 5
@@ -91,14 +97,6 @@ def display_analysis(analysis):
     # Average: 5.00
     # etc.
     
-    print("Dictionary with analysis results :")
-    print("count: ", count_numbers)
-    print("sum: ", sum_numbers)
-    print("average: ", round(average_numbers,2))
-    print("minimum: ", min_numbers)
-    print("maximum: ", max_numbers)
-    print("even count: ", even_count)
-    print("odd count: ", odd_count) 
 
 
 def main():
