@@ -11,15 +11,23 @@ def get_numbers_from_user():
     Returns:
         list: List of numbers entered by user
     """
+    print("Let's create your list")
+    print("-" * 30)
+    
     numbers = []
 
-    while True:
-        # TODO: Get input from user
-        # TODO: Check if user typed 'done'
-        # TODO: Try to convert to float and add to list
-        # TODO: Handle invalid input gracefully
-        pass
+    while True : 
+        user_input = input("Add a number or type 'done': ")
+        if user_input == "done" : 
+            print (numbers)
+            break
+            
+        try :
+            numbers.append(float(user_input))
+        except ValueError : 
+            print("Your value is incorrect, please type a number or 'done'. ")
 
+        
     return numbers
 
 
@@ -75,7 +83,7 @@ def display_analysis(analysis):
     # Sum: 25
     # Average: 5.00
     # etc.
-    pass
+    pass 
 
 
 def main():
