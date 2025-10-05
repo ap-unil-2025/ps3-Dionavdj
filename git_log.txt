@@ -1,3 +1,5 @@
+895c964 Update problem2.py with input validation
+36ae622 Add git history
 3e17483 Personalize hello message
 adb6e6a Add hello_git.py
 c23d761 Add my name and date
