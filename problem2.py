@@ -43,6 +43,14 @@ def temperature_converter():
     print("Temperature Converter")
     print("-" * 30)
 
+    # TODO: Implement the interactive converter
+    # Remember to:
+    # - Get temperature value from user
+    # - Get unit (C or F) from user
+    # - Validate input
+    # - Perform conversion
+    # - Display result rounded to 2 decimal places
+    
     while True : 
         try :
              temperature = float(input("What is the temperature?"))
@@ -62,17 +70,6 @@ def temperature_converter():
             break
         else : 
             print("Your value is incorrect. Please enter 'C' or 'F' ")
-
-
-
-    # TODO: Implement the interactive converter
-    # Remember to:
-    # - Get temperature value from user
-    # - Get unit (C or F) from user
-    # - Validate input
-    # - Perform conversion
-    # - Display result rounded to 2 decimal places
-    pass
 
 
 # Test cases (DO NOT MODIFY)
