@@ -51,16 +51,23 @@ def analyze_numbers(numbers):
     if not numbers:
         return None
 
-    analysis = {}
+    count_numbers = len(numbers)
+    sum_numbers = sum(numbers)
+    average_numbers = sum(numbers)/ len(numbers)
+    min_numbers = min(numbers)
+    max_numbers = max(numbers)
+    even_count = sum(1 for n in numbers if n % 2 == 0)
+    odd_count = sum(1 for n in numbers if n % 2 != 0)
 
-    # TODO: Calculate count
-    # TODO: Calculate sum
-    # TODO: Calculate average
-    # TODO: Find minimum
-    # TODO: Find maximum
-    # TODO: Count even numbers (hint: use modulo operator)
-    # TODO: Count odd numbers
-
+    analysis = {
+       "count": count_numbers,
+        "sum": sum_numbers,
+        "average": average_numbers,
+        "minimum": min_numbers,
+        "maximum": max_numbers,
+        "even_count": even_count,
+        "odd_count": odd_count
+        }
     return analysis
 
 
@@ -83,7 +90,15 @@ def display_analysis(analysis):
     # Sum: 25
     # Average: 5.00
     # etc.
-    pass 
+    
+    print("Dictionary with analysis results :")
+    print("count: ", count_numbers)
+    print("sum: ", sum_numbers)
+    print("average: ", round(average_numbers,2))
+    print("minimum: ", min_numbers)
+    print("maximum: ", max_numbers)
+    print("even count: ", even_count)
+    print("odd count: ", odd_count) 
 
 
 def main():
