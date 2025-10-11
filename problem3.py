@@ -11,15 +11,12 @@ def get_numbers_from_user():
     Returns:
         list: List of numbers entered by user
     """
-    print("Let's create your list")
-    print("-" * 30)
     
     numbers = []
 
     while True : 
-        user_input = input("Add a number or type 'done': ")
+        user_input = input("Enter a number: ")
         if user_input == "done" : 
-            print (numbers)
             break
             
         try :
