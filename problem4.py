@@ -30,6 +30,15 @@ def count_words(filename):
     Returns:
         int: Total number of words
     """
+    
+
+    with open(filename, 'r+') as f : 
+        content = f.read().lower()
+        content = content.replace(".", " ").replace(","," ").replace("'"," ")
+        words = content.split()
+        count_words = len(words)
+        
+    return count_words
     # TODO: Open file and count words
     # Hint: Use split() to separate words
     pass
@@ -46,6 +55,11 @@ def count_lines(filename):
         int: Total number of lines
     """
     # TODO: Open file and count lines
+    with open(filename,'r') as f : 
+        content = f.read()
+        lines = content.split('\n')
+        count_lines = len(lines)
+        return count_lines
     pass
 
 
@@ -62,6 +76,15 @@ def count_characters(filename, include_spaces=True):
     """
     # TODO: Open file and count characters
     # If include_spaces is False, don't count spaces
+    with open(filename,'r+') as f: 
+        content = f.read()
+
+        if not include_spaces : 
+            content = content.replace(" ","").replace("\n","").replace("'", "")  
+        characters = list(content)
+        count_characters = len(characters)
+        return count_characters
+
     pass
 
 
@@ -77,6 +100,14 @@ def find_longest_word(filename):
     """
     # TODO: Find the longest word
     # Hint: You might need to remove punctuation
+    with open(filename,'r+') as f: 
+        content = f.read()
+        content = content.replace(","," ").replace("."," ").replace("'"," ")
+        word = content.split()
+        find_longest_word = max(word, key=len)
+        return find_longest_word
+
+
     pass
 
 
@@ -101,6 +132,20 @@ def word_frequency(filename):
     # TODO: Remove punctuation (use string.punctuation)
     # TODO: Count frequency of each word
 
+    with open(filename,'r+') as f:
+        content = f.read()
+        content = content.lower()
+        
+        for punct in string.punctuation:
+            content = content.replace(punct, " ")
+        words = content.split()
+        
+        for word in words : 
+            if word in frequency:
+                frequency[word] += 1
+            else:
+                frequency[word] = 1
+            
     return frequency
 
 
