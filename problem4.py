@@ -3,6 +3,8 @@ Problem 4: File Word Counter
 Process text files and perform various analyses.
 """
 
+import string
+
 def create_sample_file(filename="sample.txt"):
     """
     Create a sample text file for testing.
@@ -32,16 +34,12 @@ def count_words(filename):
     """
     
 
-    with open(filename, 'r+') as f : 
+    with open(filename, 'r') as f:
         content = f.read().lower()
-        content = content.replace(".", " ").replace(","," ").replace("'"," ")
+        for punct in string.punctuation:
+            content = content.replace(punct, " ")
         words = content.split()
-        count_words = len(words)
-        
-    return count_words
-    # TODO: Open file and count words
-    # Hint: Use split() to separate words
-    pass
+        return len(words)
 
 
 def count_lines(filename):
@@ -54,13 +52,8 @@ def count_lines(filename):
     Returns:
         int: Total number of lines
     """
-    # TODO: Open file and count lines
-    with open(filename,'r') as f : 
-        content = f.read()
-        lines = content.split('\n')
-        count_lines = len(lines)
-        return count_lines
-    pass
+    with open(filename, 'r') as f:
+        return sum(1 for _ in f)
 
 
 def count_characters(filename, include_spaces=True):
@@ -74,18 +67,11 @@ def count_characters(filename, include_spaces=True):
     Returns:
         int: Total number of characters
     """
-    # TODO: Open file and count characters
-    # If include_spaces is False, don't count spaces
-    with open(filename,'r+') as f: 
+    with open(filename, 'r') as f:
         content = f.read()
-
-        if not include_spaces : 
-            content = content.replace(" ","").replace("\n","").replace("'", "")  
-        characters = list(content)
-        count_characters = len(characters)
-        return count_characters
-
-    pass
+        if not include_spaces:
+            content = content.replace(" ", "")
+        return len(content)
 
 
 def find_longest_word(filename):
@@ -98,17 +84,14 @@ def find_longest_word(filename):
     Returns:
         str: The longest word found
     """
-    # TODO: Find the longest word
-    # Hint: You might need to remove punctuation
-    with open(filename,'r+') as f: 
-        content = f.read()
-        content = content.replace(","," ").replace("."," ").replace("'"," ")
-        word = content.split()
-        find_longest_word = max(word, key=len)
-        return find_longest_word
-
-
-    pass
+    with open(filename, 'r') as f:
+        content = f.read().lower()
+        for punct in string.punctuation:
+            content = content.replace(punct, " ")
+        words = content.split()
+        if not words:
+            return ""
+        return max(words, key=len)
 
 
 def word_frequency(filename):
@@ -122,8 +105,6 @@ def word_frequency(filename):
     Returns:
         dict: Dictionary with words as keys and frequencies as values
     """
-    import string
-
     frequency = {}
 
     # TODO: Open file
@@ -132,20 +113,13 @@ def word_frequency(filename):
     # TODO: Remove punctuation (use string.punctuation)
     # TODO: Count frequency of each word
 
-    with open(filename,'r+') as f:
-        content = f.read()
-        content = content.lower()
-        
+    with open(filename, 'r') as f:
+        content = f.read().lower()
         for punct in string.punctuation:
             content = content.replace(punct, " ")
-        words = content.split()
-        
-        for word in words : 
-            if word in frequency:
-                frequency[word] += 1
-            else:
-                frequency[word] = 1
-            
+        for word in content.split():
+            frequency[word] = frequency.get(word, 0) + 1
+
     return frequency
 
 
