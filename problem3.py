@@ -14,17 +14,19 @@ def get_numbers_from_user():
     
     numbers = []
 
-    while True : 
-        user_input = input("Enter a number: ")
-        if user_input == "done" : 
+    while True:
+        user_input = input("Enter a number (or 'done'): ").strip()
+        if user_input.lower() == "done":
             break
-            
-        try :
-            numbers.append(float(user_input))
-        except ValueError : 
-            print("Your value is incorrect, please type a number or 'done'. ")
+        if not user_input:
+            print("Please enter a number or 'done'.")
+            continue
 
-        
+        try:
+            numbers.append(float(user_input))
+        except ValueError:
+            print("Your value is incorrect, please type a number or 'done'.")
+
     return numbers
 
 
@@ -50,14 +52,22 @@ def analyze_numbers(numbers):
 
     count_numbers = len(numbers)
     sum_numbers = sum(numbers)
-    average_numbers = sum(numbers)/ len(numbers)
+    average_numbers = sum_numbers / count_numbers
     min_numbers = min(numbers)
     max_numbers = max(numbers)
-    even_count = sum(1 for n in numbers if n % 2 == 0)
-    odd_count = sum(1 for n in numbers if n % 2 != 0)
+
+    def is_integer_value(value):
+        return isinstance(value, int) or (isinstance(value, float) and value.is_integer())
+
+    even_count = sum(
+        1 for n in numbers if is_integer_value(n) and int(n) % 2 == 0
+    )
+    odd_count = sum(
+        1 for n in numbers if is_integer_value(n) and int(n) % 2 != 0
+    )
 
     analysis = {
-       "count": count_numbers,
+        "count": count_numbers,
         "sum": sum_numbers,
         "average": average_numbers,
         "minimum": min_numbers,
@@ -80,19 +90,13 @@ def display_analysis(analysis):
 
     print("\nAnalysis Results:")
     print("-" * 20)
-    print("count: ", analysis['count'])
-    print("sum: ", analysis['sum'])
-    print("average:", round(analysis['average'], 2) )
-    print("minimum: ",analysis['minimum'])
-    print("maximum: ", analysis['maximum'])
-    print("even count: ", analysis['even_count'])
-    print("odd count: ", analysis['odd_count'])
-    # TODO: Display all analysis results in a nice format
-    # Example:
-    # Count: 5
-    # Sum: 25
-    # Average: 5.00
-    # etc.
+    print(f"Count: {analysis['count']}")
+    print(f"Sum: {analysis['sum']}")
+    print(f"Average: {analysis['average']:.2f}")
+    print(f"Minimum: {analysis['minimum']}")
+    print(f"Maximum: {analysis['maximum']}")
+    print(f"Even count: {analysis['even_count']}")
+    print(f"Odd count: {analysis['odd_count']}")
     
 
 
